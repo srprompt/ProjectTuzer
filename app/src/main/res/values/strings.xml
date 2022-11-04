@@ -6,4 +6,6 @@
     <string name="menu_favoritos">Favoritos</string>
     <string name="menu_emalta">Em Alta</string>
     <string name="menu_perfil">Perfil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

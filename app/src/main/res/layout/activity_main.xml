@@ -6,95 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/txtBemVindo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bem vindo(a)!"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <HorizontalScrollView
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/MainFragmentContainer"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBemVindo">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/btnImg1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/jm_circle"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/jm_circle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/btnImg2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/jm_circle"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/jm_circle"
-                app:layout_constraintStart_toEndOf="@id/btnImg1"
-                app:layout_constraintTop_toTopOf="@id/btnImg1" />
-
-            <ImageButton
-                android:id="@+id/btnImg3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/jm_circle"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/jm_circle"
-                app:layout_constraintStart_toEndOf="@id/btnImg2"
-                app:layout_constraintTop_toTopOf="@id/btnImg2" />
-
-            <ImageButton
-                android:id="@+id/btnImg4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/jm_circle"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/jm_circle"
-                app:layout_constraintStart_toEndOf="@id/btnImg3"
-                app:layout_constraintTop_toTopOf="@id/btnImg3" />
-
-            <ImageButton
-                android:id="@+id/btnImg5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/jm_circle"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/jm_circle"
-                app:layout_constraintStart_toEndOf="@id/btnImg4"
-                app:layout_constraintTop_toTopOf="@id/btnImg4" />
-
-            <ImageButton
-                android:id="@+id/btnImg6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/jm_circle"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/jm_circle"
-                app:layout_constraintStart_toEndOf="@id/btnImg5"
-                app:layout_constraintTop_toTopOf="@id/btnImg5" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_main"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
