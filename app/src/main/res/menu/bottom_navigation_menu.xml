@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_home"/>
+    <item
+        android:id="@+id/menu_explorar"
+        android:enabled="true"
+        android:icon="@drawable/ic_explorar"
+        android:title="@string/menu_explorar"/>
+    <item
+        android:id="@+id/menu_favoritos"
+        android:enabled="true"
+        android:icon="@drawable/ic_favoritos"
+        android:title="@string/menu_favoritos"/>
+    <item
+        android:id="@+id/menu_emalta"
+        android:enabled="true"
+        android:icon="@drawable/ic_emalta"
+        android:title="@string/menu_emalta"/>
+    <item
+        android:id="@+id/menu_perfil"
+        android:enabled="true"
+        android:icon="@drawable/ic_perfil"
+        android:title="@string/menu_perfil"/>
+
+</menu>

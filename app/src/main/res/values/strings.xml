@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">James-Mark2</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_explorar">Explorar</string>
+    <string name="menu_favoritos">Favoritos</string>
+    <string name="menu_emalta">Em Alta</string>
+    <string name="menu_perfil">Perfil</string>
 </resources>
