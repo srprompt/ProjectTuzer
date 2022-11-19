@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String apiKey = getString(R.string.map_key);
-
         //inicia a navegação nos fragments
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

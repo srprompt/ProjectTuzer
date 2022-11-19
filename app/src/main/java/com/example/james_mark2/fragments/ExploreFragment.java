@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.james_mark2.BuildConfig;
 import com.example.james_mark2.R;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.CameraUpdate;
@@ -40,16 +41,16 @@ import java.util.List;
 
 public class ExploreFragment extends Fragment {
 
-    private GoogleMap googleMap;
 
+    private GoogleMap googleMap;
     private LatLng iflandia = new LatLng(-22.693469, -47.625500);
-    //private MapFragment mapFragment;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String apiKey = getString(R.string.map_key);
+        String apiKey = BuildConfig.MAPS_API_KEY;
 
         //Inicializa o SDK
         Places.initialize(getContext(), apiKey);
