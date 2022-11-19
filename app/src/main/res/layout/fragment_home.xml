@@ -39,7 +39,7 @@
                             <ImageButton
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:background="@drawable/jm_circle"
+                                android:background="@color/cardview_shadow_end_color"
                                 android:src="@mipmap/jm_circle"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
