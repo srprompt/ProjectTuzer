@@ -1,8 +1,9 @@
 package com.example.james_mark2.mData;
 
 public class Passeios {
-    String nome;
-    String url;
+    private String nome;
+    private String url;
+    private int id;
 
     public Passeios() {
 
@@ -22,5 +23,13 @@ public class Passeios {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
