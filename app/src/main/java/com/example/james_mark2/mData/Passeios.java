@@ -4,6 +4,7 @@ public class Passeios {
     private String nome;
     private String url;
     private int id;
+    private String descricao;
 
     public Passeios() {
 
@@ -31,5 +32,13 @@ public class Passeios {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

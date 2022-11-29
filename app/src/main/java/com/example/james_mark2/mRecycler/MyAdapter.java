@@ -1,6 +1,7 @@
 package com.example.james_mark2.mRecycler;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.james_mark2.EventoActivity;
 import com.example.james_mark2.R;
 import com.example.james_mark2.mData.Passeios;
 import com.example.james_mark2.mPicasso.PicassoClient;
@@ -40,6 +42,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
         //Image
         PicassoClient.downloadImage(c,passeios.get(position).getUrl(),holder.img);
+
+        holder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), EventoActivity.class);
+                intent.putExtra("Image id", String.valueOf(passeios.get(holder.getLayoutPosition()).getId()));
+                intent.putExtra("Image url",String.valueOf(passeios.get(holder.getLayoutPosition()).getUrl()));
+                intent.putExtra("Descricao",String.valueOf(passeios.get(holder.getLayoutPosition()).getDescricao()));
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
