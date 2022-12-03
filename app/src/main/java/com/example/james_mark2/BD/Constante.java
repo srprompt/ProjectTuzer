@@ -34,7 +34,7 @@ public class Constante {
             + "nome TEXT NOT NULL, email TEXT NOT NULL, data_nasc TEXT NOT NULL, cidade TEXT NOT NULL, estado INTEGER, sexo INTEGER, url TEXT);";
 
     static final String CREATE_TB_FAVORITO="CREATE TABLE favorito_TB (idFavorito INTEGER PRIMARY KEY AUTOINCREMENT,"
-    + "idPasseio INTEGER NOT NULL, idUsuario INTEGER NOT NULL);";
+    + "idPasseio INTEGER NOT NULL UNIQUE, idUsuario INTEGER NOT NULL );";
 
     //UPGRADE TB
     static final String UPGRADE_TB = "DROP TABLE IF EXISTS " + TB_NOME;
