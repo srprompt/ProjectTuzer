@@ -41,17 +41,18 @@
                             <ImageButton
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:background="@color/cardview_shadow_end_color"
-                                android:src="@mipmap/jm_circle"
+                                android:background="@drawable/jm_circle"
+                                android:src="@mipmap/ic_copa22_round"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView1"
+                                android:id="@+id/textView6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="Comida" />
+                                android:text="Copa 22"
+                                android:textAlignment="center" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -63,7 +64,51 @@
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
-                                android:src="@mipmap/jm_circle"
+                                android:src="@mipmap/ic_reveillon_round"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Réveillon"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:background="@color/cardview_shadow_end_color"
+                                android:src="@mipmap/ic_gastronomia_round"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Gastronomia" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/jm_circle"
+                                android:src="@mipmap/ic_show_round"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,7 +129,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
-                                android:src="@mipmap/jm_circle"
+                                android:src="@mipmap/ic_turismo"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,7 +138,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="Pontos Turísticos"
+                                android:text="Turismo"
                                 android:textAlignment="center" />
                         </LinearLayout>
 
@@ -106,7 +151,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
-                                android:src="@mipmap/jm_circle"
+                                android:src="@mipmap/ic_esportes_round"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -115,49 +160,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="Parques"
+                                android:text="Esportes"
                                 android:textAlignment="center" />
                         </LinearLayout>
 
-                        <ImageButton
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/jm_circle"
-                            android:src="@mipmap/jm_circle"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageButton
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/jm_circle"
-                            android:src="@mipmap/jm_circle"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageButton
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/jm_circle"
-                            android:src="@mipmap/jm_circle"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageButton
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/jm_circle"
-                            android:src="@mipmap/jm_circle"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageButton
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/jm_circle"
-                            android:src="@mipmap/jm_circle"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                     </LinearLayout>
 

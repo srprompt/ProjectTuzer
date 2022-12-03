@@ -37,13 +37,16 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 public class ExploreFragment extends Fragment {
 
 
     private GoogleMap googleMap;
-    private LatLng iflandia = new LatLng(-22.693469, -47.625500);
+    private LatLng iflandia = new LatLng(-23.552485, -46.632933
+
+    );
 
 
     @Override
@@ -69,12 +72,12 @@ public class ExploreFragment extends Fragment {
             public void onMapReady(GoogleMap googleMap) {
                 // When map is loaded
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iflandia, 15));
-                googleMap.addMarker(new MarkerOptions()
+                /*googleMap.addMarker(new MarkerOptions()
                         .position(iflandia)
                         .title("Katiau Inc.")
                         .snippet("O início de um sonho")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-
+                */
 
                 googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                     @Override
@@ -120,11 +123,44 @@ public class ExploreFragment extends Fragment {
                         iflandia = new LatLng(place.getLatLng().latitude, place.getLatLng().longitude);
 
                         googleMap.clear();
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iflandia, 10));
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iflandia, 13));
                         googleMap.addMarker(new MarkerOptions()
                                 .position(iflandia)
                                 .title(place.getName())
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+
+                        //----------------------------------DATABASE-----------------------------------//
+                        //cidade, nome_evento, lat, lon
+                        String evento [][] = {
+                                                {"Piracicaba", "Esalquizada", "-22.71183088087683", "-47.634542433283045"},
+                                                {"Piracicaba", "Festa da Pamonha", "-22.717381", "-47.652016"},
+                                                {"Piracicaba", "Revoada", "-22.710303", "-47.640236"},
+                                                {"Piracicaba", "Baile de Verão", "-22.69503513557547", "-47.65183755132581"},
+                                                {"Piracicaba", "Todo mundo na piscina", "-22.69285082843774", "-47.66172175823422"},
+                                                {"Piracicaba", "IFUDE#", "-22.69339641453475", "-47.62524715958402"},
+                                                {"Passos", "Casa do Vinicius", "-20.708020", "-46.628082"}
+                        };
+
+                        int cont=0;
+                        for(int i=0; i<evento.length;i++){
+                            if((evento[i] != null)){
+                                cont++;
+                            }
+                        }
+
+                    for(int i=0; i<cont; i++){
+                        if(Objects.equals(place.getName(), evento[i][0])){
+                            for(int j=0; j<cont; j++){
+                                iflandia = new LatLng(Double.parseDouble(evento[j][2]), Double.parseDouble(evento[j][3]));
+                                googleMap.addMarker(new MarkerOptions()
+                                        .position(iflandia)
+                                        .title(evento[j][1])
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                            }
+                        }
+                    }
+                    //--------------------------------------------------------------------------------//
+
                     }
 
                     @Override
