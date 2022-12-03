@@ -20,6 +20,7 @@ import com.example.james_mark2.BD.DBAdapter;
 import com.example.james_mark2.R;
 import com.example.james_mark2.mData.Passeios;
 import com.example.james_mark2.mRecycler.MyAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,9 @@ public class HomeFragment extends Fragment {
     ImageButton categoria4;
     ImageButton categoria5;
     ImageButton categoria6;
+    boolean bancoCarregado = false;
+
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -103,15 +107,27 @@ public class HomeFragment extends Fragment {
         categoria4 = view.findViewById(R.id.btnCategoria4);
         categoria5 = view.findViewById(R.id.btnCategoria5);
         categoria6 = view.findViewById(R.id.btnCategoria6);
+
+
+
         //adapter
         adapter = new MyAdapter(getContext(), passeios);
         rv.setAdapter(adapter);
         //usar funcao save pra adicionar no banco.
         //save("teste","https://blogdeviagens.com.br/wp-content/uploads/2021/04/5_passeios_em_joao_pessoa.jpg"); Exemplo adicionar
 
-        //carregaBancoInicial(); // chamar apenas uma vez *descomentar caso o banco esteja vazio (n sei se o banco é compartilhado
 
-        retrieve(); //Depois de que o banco tiver alguma carga, só chamar essa pra pegar as imagens e texto
+        if(!bancoCarregado) {
+            retrieve(); //Depois de que o banco tiver alguma carga, só chamar essa pra pegar as imagens e texto
+            if(passeios.size()<=0){
+            carregaBancoInicial(); // chamar apenas uma vez *descomentar caso o banco esteja vazio (n sei se o banco é compartilhado
+            bancoCarregado=true;
+            retrieve();
+            }
+        }
+
+
+
 
         //acaoes click categoria
         categoria1.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +171,9 @@ public class HomeFragment extends Fragment {
                 carregaCategoria(6);
             }
         });
+
+
+
     }
 
     private void save(String name, String url, String descricao,String local, String categoria){

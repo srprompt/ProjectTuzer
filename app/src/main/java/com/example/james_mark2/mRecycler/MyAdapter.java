@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.james_mark2.BD.DBAdapter;
 import com.example.james_mark2.EventoActivity;
 import com.example.james_mark2.R;
+import com.example.james_mark2.mData.Favorito;
 import com.example.james_mark2.mData.Passeios;
+import com.example.james_mark2.mData.Usuario;
 import com.example.james_mark2.mPicasso.PicassoClient;
 
 import java.util.ArrayList;
@@ -20,6 +23,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     Context c;
     ArrayList<Passeios> passeios;
+    Usuario usuario;
+    Favorito favorito;
+    ArrayList<Favorito> favoritos= new ArrayList<>();
 
     public MyAdapter(Context c, ArrayList<Passeios> passeios) {
         this.c = c;
@@ -51,6 +57,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
                 intent.putExtra("Image url",String.valueOf(passeios.get(holder.getLayoutPosition()).getUrl()));
                 intent.putExtra("Descricao",String.valueOf(passeios.get(holder.getLayoutPosition()).getDescricao()));
                 view.getContext().startActivity(intent);
+            }
+        });
+        //btn favorito click
+        holder.btnFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    DBAdapter db = new DBAdapter(view.getContext());
+                    db.openDB();
+                    db.addFavorito(passeios.get(holder.getLayoutPosition()).getId(),0);
+                    db.closeDB();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
         });
     }

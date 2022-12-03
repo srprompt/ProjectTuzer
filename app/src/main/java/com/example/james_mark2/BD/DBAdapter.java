@@ -95,6 +95,26 @@ public class DBAdapter {
         return db.query(Constante.TB_NOME_USUARIO, colunas, null, null, null, null, null);
     }
 
+    //add favorito
+    public long addFavorito(Integer idPasseio, Integer idUsuario){
+        try {
+            ContentValues cv = new ContentValues();
+            cv.put(Constante.ROW_ID, idPasseio);
+            cv.put(Constante.ID_USUARIO, idUsuario);
 
+            db.insert((Constante.TB_NOME_FAVORITO),Constante.ID_FAVORITO,cv);
+
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public Cursor getFavoritos(){
+        String[] colunas = {Constante.ID_FAVORITO, Constante.ROW_ID, Constante.ID_USUARIO};
+
+        return db.query(Constante.TB_NOME_FAVORITO, colunas, null, null, null, null, null);
+    }
 }
 

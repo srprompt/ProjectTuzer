@@ -97,6 +97,7 @@ public class TopTrendsFragment extends Fragment {
     }
 
     private void carregaTop(){
+        passeios.clear();
         try {
             DBAdapter db = new DBAdapter(getContext());
             db.openDB();

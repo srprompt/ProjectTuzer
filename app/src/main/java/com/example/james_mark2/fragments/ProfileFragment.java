@@ -351,18 +351,14 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void carregaperfil(){
-        DBAdapter db = new DBAdapter(getContext());
-        db.openDB();
-        db.addPerfil("teste","","15/01/2000","Piracicaba",1,"teste",1);
-        db.closeDB();
-    }
+
 
     private void preencheCampos(){
 
         for(int i=0;i<usuarios.size();i++){
            if(usuarios.get(i).getNome().equals(String.valueOf(usuario.getNomeLogin()))){
-                editTextNome.setText(usuarios.get(i).getNome());
+               usuario.setId(i);
+               editTextNome.setText(usuarios.get(i).getNome());
                editTextEmail.setText(usuarios.get(i).getEmail());
                editTextDataNasc.setText(usuarios.get(i).getDataNasc());
                editTextCidade.setText(usuarios.get(i).getCidade());
