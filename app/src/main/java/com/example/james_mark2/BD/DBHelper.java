@@ -13,7 +13,9 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
+            db.execSQL(Constante.CREATE_TB_USUARIO);
             db.execSQL(Constante.CREATE_TB);
+
         }catch (Exception e){
             e.printStackTrace();
         }    }
@@ -21,5 +23,6 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(Constante.UPGRADE_TB);
+        db.execSQL(Constante.UPGRADE_TB_USUARIO);
     }
 }

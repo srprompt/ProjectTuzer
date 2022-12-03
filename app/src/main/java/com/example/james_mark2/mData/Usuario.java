@@ -9,6 +9,7 @@ public class Usuario {
     private Integer estado;
     private Integer sexo;
     private String url;
+    private String nomeLogin;
 
 
     public Usuario() {
@@ -76,5 +77,13 @@ public class Usuario {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getNomeLogin() {
+        return nomeLogin;
+    }
+
+    public void setNomeLogin(String nomeLogin) {
+        this.nomeLogin = nomeLogin;
     }
 }

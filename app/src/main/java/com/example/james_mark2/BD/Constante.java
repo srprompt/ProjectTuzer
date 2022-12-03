@@ -25,10 +25,10 @@ public class Constante {
 
     //CREATE TABLE STMT
     static final String CREATE_TB= "CREATE TABLE passeio_TB (id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + "nome TEXT NOT NULL, url TEXT NOT NULL, descricao TEXT NOT NULL, local TEXT, categoria TEXT);";
+            + "nome TEXT NOT NULL, url TEXT, descricao TEXT NOT NULL, local TEXT, categoria TEXT);";
 
     static final String CREATE_TB_USUARIO= "CREATE TABLE usuario_TB (id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + "nome TEXT NOT NULL, email TEXT NOT NULL, data_nasc TEXT NOT NULL, cidade TEXT NOT NULL, estado INTEGER, sexo INTEGER);";
+            + "nome TEXT NOT NULL, email TEXT NOT NULL, data_nasc TEXT NOT NULL, cidade TEXT NOT NULL, estado INTEGER, sexo INTEGER, url TEXT);";
 
     //UPGRADE TB
     static final String UPGRADE_TB = "DROP TABLE IF EXISTS " + TB_NOME;

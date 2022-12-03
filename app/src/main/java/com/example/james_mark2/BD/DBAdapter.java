@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.james_mark2.mData.Usuario;
+
 public class DBAdapter {
     Context c;
     SQLiteDatabase db;
@@ -85,4 +87,14 @@ public class DBAdapter {
 
         return 0;
     }
+
+    public Cursor getPerfil(){
+        String[] colunas = {Constante.ID_USUARIO, Constante.NOME_USUARIO, Constante.URL, Constante.EMAIL, Constante.DATA_NASC,Constante.CIDADE, Constante.ESTADO, Constante.SEXO};
+
+        Usuario usuario = new Usuario();
+        return db.query(Constante.TB_NOME_USUARIO, colunas, null, null, null, null, null);
+    }
+
+
 }
+

@@ -1,5 +1,8 @@
 package com.example.james_mark2.fragments;
 
+import android.app.Dialog;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -45,6 +48,9 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
 
 
+    private EditText nomeLogin;
+    private EditText senhaLogin;
+    private Button loginBtn;
     private Spinner spinnerEstado;
     private EditText editTextNome;
     private EditText editTextCidade;
@@ -54,10 +60,11 @@ public class ProfileFragment extends Fragment {
     private ImageView imageViewUsario;
     private FloatingActionButton menuEditar;
     private Button btnSalvar;
-
+    private FloatingActionButton menuPerfil;
     private int id_sexo,id_estado;
 
     Usuario usuario = new Usuario();
+    ArrayList<Usuario> usuarios = new ArrayList<>();
 
 
     public ProfileFragment() {
@@ -112,8 +119,23 @@ public class ProfileFragment extends Fragment {
         imageViewUsario = view.findViewById(R.id.imageViewUsuario);
         menuEditar = view.findViewById(R.id.btnMenuEditar);
         btnSalvar = view.findViewById(R.id.btnSalvar);
+        menuPerfil = view.findViewById(R.id.btnMenuLogin);
 
         habilitaDesabilitaCampos(false);
+
+       // carregaperfil();
+
+        retrieve();
+        //preencheCampos();
+
+        //login perfil
+        menuPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayDialog();
+            }
+        });
+
 
         //Habilitar edição perfil
 
@@ -135,19 +157,24 @@ public class ProfileFragment extends Fragment {
 
                 habilitaDesabilitaCampos(false);
 
+/*
                 usuario.setNome(editTextNome.getText().toString());
                 usuario.setCidade(editTextCidade.getText().toString());
                 usuario.setDataNasc(editTextDataNasc.getText().toString());
                 usuario.setEmail(editTextEmail.getText().toString());
                 usuario.setSexo(id_sexo);
                 usuario.setEstado(id_estado);
-
+                usuarios.add(usuario);*/
                 DBAdapter db = new DBAdapter(getContext());
                 db.openDB();
-                long result=db.addPerfil(usuario.getNome(),usuario.getUrl(),usuario.getDataNasc(),usuario.getCidade(),
-                        usuario.getEstado(),usuario.getEmail(),usuario.getSexo());
-                if(result!=1){
+                long result=db.addPerfil(editTextNome.getText().toString(),"",editTextDataNasc.getText().toString(),editTextCidade.getText().toString(),
+                        id_estado,editTextEmail.getText().toString(),id_sexo);
+                if(result!=1 || editTextNome.getText().toString().length()<=0){
                     Toast.makeText(getContext(),"Não foi possivel salvar.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getContext(),"Salvo com sucesso",Toast.LENGTH_SHORT).show();
+
                 }
                 db.closeDB();
             }
@@ -240,7 +267,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 id_estado = i;
-                //usuario.setEstado(i);
             }
 
             @Override
@@ -261,5 +287,90 @@ public class ProfileFragment extends Fragment {
         spinnerEstado.setEnabled(controle);
         spinnerSexo.setEnabled(controle);
         btnSalvar.setEnabled(controle);
+    }
+
+    private void displayDialog(){
+        Dialog d = new Dialog(getContext());
+        d.setTitle("Save To DB");
+        d.setContentView(R.layout.display_login);
+
+        nomeLogin = d.findViewById(R.id.nomeLoginEditTxt);
+        senhaLogin = d.findViewById(R.id.senhaLoginEditTxt);
+        loginBtn = d.findViewById(R.id.saveLoginBtn);
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              retrieve();
+              usuario.setNomeLogin(nomeLogin.getText().toString());
+                preencheCampos();
+                d.hide();
+            }
+        });
+
+        d.show();
+    }
+
+
+    private void retrieve(){
+        //usuario.setNomeLogin(nomeLogin.getText().toString());
+        try {
+            usuarios.clear();
+            DBAdapter db = new DBAdapter(getContext());
+            db.openDB();
+            Cursor c = db.getPerfil();
+            while (c.moveToNext()){
+                int id = c.getInt(0);
+                String nome = c.getString(1);
+                String url = c.getString(2);
+                String email = c.getString(3);
+                String dataNasc = c.getString(4);
+                String cidade = c.getString(5);
+                int estado = c.getInt(6);
+                int sexo = c.getInt(7);
+
+                    Usuario us = new Usuario();
+                    us.setId(id);
+                    us.setNome(nome);
+                    us.setUrl(url);
+                    us.setDataNasc(dataNasc);
+                    us.setCidade(cidade);
+                    us.setEstado(estado);
+                    us.setEmail(email);
+                   us.setSexo(sexo);
+
+                    usuarios.add(us);
+
+                    if(usuarios.size()>0){
+                        //preencheCampos();
+                    }
+                    db.closeDB();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void carregaperfil(){
+        DBAdapter db = new DBAdapter(getContext());
+        db.openDB();
+        db.addPerfil("teste","","15/01/2000","Piracicaba",1,"teste",1);
+        db.closeDB();
+    }
+
+    private void preencheCampos(){
+
+        for(int i=0;i<usuarios.size();i++){
+           if(usuarios.get(i).getNome().equals(String.valueOf(usuario.getNomeLogin()))){
+                editTextNome.setText(usuarios.get(i).getNome());
+               editTextEmail.setText(usuarios.get(i).getEmail());
+               editTextDataNasc.setText(usuarios.get(i).getDataNasc());
+               editTextCidade.setText(usuarios.get(i).getCidade());
+               spinnerEstado.setSelection(usuarios.get(i).getEstado());
+               spinnerSexo.setSelection(usuarios.get(i).getSexo());
+               //url
+           }
+        }
+
     }
 }
