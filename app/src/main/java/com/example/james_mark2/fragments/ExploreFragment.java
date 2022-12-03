@@ -2,6 +2,7 @@ package com.example.james_mark2.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.icu.util.ULocale;
 import android.os.Bundle;
 
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.james_mark2.BuildConfig;
+import com.example.james_mark2.DetailsActivity;
 import com.example.james_mark2.R;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.CameraUpdate;
@@ -25,6 +27,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
@@ -96,6 +99,19 @@ public class ExploreFragment extends Fragment {
                         // Add marker on map
                         googleMap.addMarker(markerOptions);
                     }
+
+                });
+
+                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(@NonNull Marker marker) {
+                        String markertitle = marker.getTitle();
+
+                        Intent i = new Intent(getContext(), DetailsActivity.class);
+                        i.putExtra("title", markertitle);
+                        startActivity(i);
+                        return false;
+                    }
                 });
 
                 //----------------------------------AUTO-COMPLETE-----------------------------------//
@@ -155,7 +171,8 @@ public class ExploreFragment extends Fragment {
                                 googleMap.addMarker(new MarkerOptions()
                                         .position(iflandia)
                                         .title(evento[j][1])
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                );
                             }
                         }
                     }
@@ -169,12 +186,22 @@ public class ExploreFragment extends Fragment {
                         Log.i(TAG, "An error occurred: " + status);
                     }
                 });
+
+
             }
+
         });
 
         // Return view
         return view;
+
+
     }
+
+
+
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
