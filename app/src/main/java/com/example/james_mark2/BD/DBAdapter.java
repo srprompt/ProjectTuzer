@@ -34,12 +34,13 @@ public class DBAdapter {
 
     }
     //SAVE
-    public long add(String name, String url, String descricao){
+    public long add(String name, String url, String descricao, String categoria){
         try {
             ContentValues cv = new ContentValues();
             cv.put(Constante.NOME, name);
             cv.put(Constante.URL, url);
             cv.put(Constante.DESCRICAO,descricao);
+            cv.put(Constante.CATEGORIA,categoria);
 
             db.insert(Constante.TB_NOME,Constante.ROW_ID,cv);
             return 1;
@@ -52,9 +53,15 @@ public class DBAdapter {
 
     //RETRIEVE
     public Cursor getPasseios(){
-        String[] colunas = {Constante.ROW_ID, Constante.NOME, Constante.URL, Constante.DESCRICAO};
+        String[] colunas = {Constante.ROW_ID, Constante.NOME, Constante.URL, Constante.DESCRICAO, Constante.CATEGORIA};
 
         return db.query(Constante.TB_NOME, colunas, null, null, null, null, null);
+    }
+
+    public Cursor getPasseiosCategoria(int categoriaId){
+        String[] colunas = {Constante.ROW_ID, Constante.NOME, Constante.URL, Constante.DESCRICAO, Constante.CATEGORIA};
+
+        return db.query(Constante.TB_NOME,colunas, String.valueOf(categoriaId),null,null,null,null);
     }
 
     //Salva perfil

@@ -59,6 +59,7 @@ public class ProfileFragment extends Fragment {
 
     Usuario usuario = new Usuario();
 
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -120,6 +121,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 habilitaDesabilitaCampos(true);
+
+
+
             }
         });
 
@@ -128,6 +132,7 @@ public class ProfileFragment extends Fragment {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 habilitaDesabilitaCampos(false);
 
                 usuario.setNome(editTextNome.getText().toString());

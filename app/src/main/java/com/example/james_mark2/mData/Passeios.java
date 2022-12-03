@@ -6,7 +6,7 @@ public class Passeios {
     private int id;
     private String descricao;
     private String local;
-    private String categoria;
+    private int categoria;
 
     public Passeios() {
 
@@ -52,11 +52,11 @@ public class Passeios {
         this.local = local;
     }
 
-    public String getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.james_mark2.BD.DBAdapter;
@@ -41,6 +42,12 @@ public class HomeFragment extends Fragment {
 
     RecyclerView rv;
     MyAdapter adapter;
+    ImageButton categoria1;
+    ImageButton categoria2;
+    ImageButton categoria3;
+    ImageButton categoria4;
+    ImageButton categoria5;
+    ImageButton categoria6;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -89,6 +96,14 @@ public class HomeFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setItemAnimator(new DefaultItemAnimator());
 
+        //instancia botoes categoria
+        categoria1 = view.findViewById(R.id.btnCategoria1);
+        categoria2 = view.findViewById(R.id.btnCategoria2);
+        categoria3 = view.findViewById(R.id.btnCategoria3);
+        categoria4 = view.findViewById(R.id.btnCategoria4);
+        categoria5 = view.findViewById(R.id.btnCategoria5);
+        categoria6 = view.findViewById(R.id.btnCategoria6);
+
         //adapter
         adapter = new MyAdapter(getContext(), passeios);
         rv.setAdapter(adapter);
@@ -98,12 +113,55 @@ public class HomeFragment extends Fragment {
         //carregaBancoInicial(); // chamar apenas uma vez *descomentar caso o banco esteja vazio (n sei se o banco é compartilhado
 
         retrieve(); //Depois de que o banco tiver alguma carga, só chamar essa pra pegar as imagens e texto
+
+        //acaoes click categoria
+        categoria1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carregaCategoria(1);
+            }
+        });
+
+        categoria2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carregaCategoria(2);
+            }
+        });
+
+        categoria3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carregaCategoria(3);
+            }
+        });
+
+        categoria4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carregaCategoria(4);
+            }
+        });
+
+        categoria5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carregaCategoria(5);
+            }
+        });
+
+        categoria6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carregaCategoria(6);
+            }
+        });
     }
 
-    private void save(String name, String url, String descricao){
+    private void save(String name, String url, String descricao, String categoria){
         DBAdapter db = new DBAdapter(getContext());
         db.openDB();
-        long result=db.add(name,url,descricao);
+        long result=db.add(name,url,descricao, categoria);
         if(result!=1){
             Toast.makeText(getContext(),"Não foi possivel salvar.",Toast.LENGTH_SHORT).show();
         }
@@ -121,12 +179,14 @@ public class HomeFragment extends Fragment {
                 String nome = c.getString(1);
                 String url = c.getString(2);
                 String descricao = c.getString(3);
+                Integer categoria = c.getInt(4);
 
                 Passeios ps = new Passeios();
                 ps.setId(id);
                 ps.setNome(nome);
                 ps.setUrl(url);
                 ps.setDescricao(descricao);
+                ps.setCategoria(categoria);
 
                 passeios.add(ps);
             }
@@ -141,14 +201,48 @@ public class HomeFragment extends Fragment {
     }
 
 
+    private void carregaCategoria(int categoriaId){
+        try {
+            passeios.clear();
+            DBAdapter db = new DBAdapter(getContext());
+            db.openDB();
+            Cursor c = db.getPasseiosCategoria(categoriaId);
+            while (c.moveToNext()) {
+                int id = c.getInt(0);
+                String nome = c.getString(1);
+                String url = c.getString(2);
+                String descricao = c.getString(3);
+                int categoria = c.getInt(4);
+
+
+                if(categoria==categoriaId) {
+                    Passeios ps = new Passeios();
+                    ps.setId(id);
+                    ps.setNome(nome);
+                    ps.setUrl(url);
+                    ps.setDescricao(descricao);
+                    ps.setCategoria(categoria);
+                    passeios.add(ps);
+                }
+            }
+
+            if (passeios.size() > 0) {
+                rv.setAdapter(adapter);
+            }
+            db.closeDB();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     //Essa função só está aqui para efetuar uma carga de conteudo inicial enquanto não é possivel adicionar algo pelo aplicativo
     //É necessario chamar apenas uma vez, realizar uma chamada na primeira execução caso o banco esteja sem conteudo e comentar
     //depois para não duplicar itens no banco
     private void carregaBancoInicial(){
         //Exemplo adicionando as imagens que estavam antes
-        save("Passeio 1","https://cdn.culturagenial.com/imagens/cristo-redentor-3-cke.jpg","Descricao evento 1");
-        save("Passeio 2","https://h8f7z4t2.stackpathcdn.com/wp-content/uploads/2015/10/pontos-turisticos-em-roma-640x449.jpg", "Descricao evento 2");
-        save("Passeio 3","https://classic.exame.com/wp-content/uploads/2016/09/size_960_16_9_taj-mahal7.jpg?quality=70&strip=info&w=960", "Descricao evento 3");
-        save("Passeio 4","https://www.remessaonline.com.br/blog/wp-content/uploads/2022/06/pontos-turisticos-mais-visitados-do-mundo-1170x780.jpg.optimal.jpg", "Descricao evento 4");
+        save("Passeio 1","https://cdn.culturagenial.com/imagens/cristo-redentor-3-cke.jpg","Descricao evento 1","1");
+        save("Passeio 2","https://h8f7z4t2.stackpathcdn.com/wp-content/uploads/2015/10/pontos-turisticos-em-roma-640x449.jpg", "Descricao evento 2","1");
+        save("Passeio 3","https://classic.exame.com/wp-content/uploads/2016/09/size_960_16_9_taj-mahal7.jpg?quality=70&strip=info&w=960", "Descricao evento 3","2");
+        save("Passeio 4","https://www.remessaonline.com.br/blog/wp-content/uploads/2022/06/pontos-turisticos-mais-visitados-do-mundo-1170x780.jpg.optimal.jpg", "Descricao evento 4","3");
     }
 }

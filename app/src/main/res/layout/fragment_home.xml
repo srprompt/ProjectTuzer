@@ -39,6 +39,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btnCategoria1"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
@@ -61,6 +62,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btnCategoria2"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
@@ -84,6 +86,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btnCategoria3"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@color/cardview_shadow_end_color"
@@ -105,6 +108,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btnCategoria4"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
@@ -126,6 +130,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btnCategoria5"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
@@ -148,6 +153,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btnCategoria6"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/jm_circle"
