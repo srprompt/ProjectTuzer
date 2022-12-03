@@ -1,14 +1,25 @@
 package com.example.james_mark2.fragments;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.james_mark2.BD.DBAdapter;
 import com.example.james_mark2.R;
+import com.example.james_mark2.mData.Passeios;
+import com.example.james_mark2.mRecycler.MyAdapter;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +36,11 @@ public class TopTrendsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private RecyclerView rv;
+    MyAdapter adapter;
+    ArrayList<Passeios> passeios = new ArrayList<>();
+
 
     public TopTrendsFragment() {
         // Required empty public constructor
@@ -62,5 +78,56 @@ public class TopTrendsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_top_trends, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        //instancia o recycler view pelo toptrends fragment
+        rv = view.findViewById(R.id.recyclerView);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setItemAnimator(new DefaultItemAnimator());
+
+        adapter = new MyAdapter(getContext(), passeios);
+        rv.setAdapter(adapter);
+
+        carregaTop();
+    }
+
+    private void carregaTop(){
+        try {
+            DBAdapter db = new DBAdapter(getContext());
+            db.openDB();
+            Cursor c = db.getPasseios();
+            while (c.moveToNext()) {
+                int id = c.getInt(0);
+                String nome = c.getString(1);
+                String url = c.getString(2);
+                String descricao = c.getString(3);
+                String local = c.getString(4);
+                Integer categoria = c.getInt(5);
+
+                if(local.equals("Piracicaba")) {
+                    Passeios ps = new Passeios();
+                    ps.setId(id);
+                    ps.setNome(nome);
+                    ps.setUrl(url);
+                    ps.setDescricao(descricao);
+                    ps.setLocal(local);
+                    ps.setCategoria(categoria);
+                    passeios.add(ps);
+                }
+
+            }
+
+            if (passeios.size() > 0) {
+                rv.setAdapter(adapter);
+            }
+            db.closeDB();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

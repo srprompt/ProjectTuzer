@@ -34,12 +34,13 @@ public class DBAdapter {
 
     }
     //SAVE
-    public long add(String name, String url, String descricao, String categoria){
+    public long add(String name, String url, String descricao,String local, String categoria){
         try {
             ContentValues cv = new ContentValues();
             cv.put(Constante.NOME, name);
             cv.put(Constante.URL, url);
             cv.put(Constante.DESCRICAO,descricao);
+            cv.put(Constante.LOCAL,local);
             cv.put(Constante.CATEGORIA,categoria);
 
             db.insert(Constante.TB_NOME,Constante.ROW_ID,cv);
@@ -53,7 +54,7 @@ public class DBAdapter {
 
     //RETRIEVE
     public Cursor getPasseios(){
-        String[] colunas = {Constante.ROW_ID, Constante.NOME, Constante.URL, Constante.DESCRICAO, Constante.CATEGORIA};
+        String[] colunas = {Constante.ROW_ID, Constante.NOME, Constante.URL, Constante.DESCRICAO,Constante.LOCAL, Constante.CATEGORIA};
 
         return db.query(Constante.TB_NOME, colunas, null, null, null, null, null);
     }

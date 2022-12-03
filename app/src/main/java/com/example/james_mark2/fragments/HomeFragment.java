@@ -158,10 +158,10 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void save(String name, String url, String descricao, String categoria){
+    private void save(String name, String url, String descricao,String local, String categoria){
         DBAdapter db = new DBAdapter(getContext());
         db.openDB();
-        long result=db.add(name,url,descricao, categoria);
+        long result=db.add(name,url,descricao,local, categoria);
         if(result!=1){
             Toast.makeText(getContext(),"Não foi possivel salvar.",Toast.LENGTH_SHORT).show();
         }
@@ -179,13 +179,15 @@ public class HomeFragment extends Fragment {
                 String nome = c.getString(1);
                 String url = c.getString(2);
                 String descricao = c.getString(3);
-                Integer categoria = c.getInt(4);
+                String local = c.getString(4);
+                int categoria = c.getInt(5);
 
                 Passeios ps = new Passeios();
                 ps.setId(id);
                 ps.setNome(nome);
                 ps.setUrl(url);
                 ps.setDescricao(descricao);
+                ps.setLocal(local);
                 ps.setCategoria(categoria);
 
                 passeios.add(ps);
@@ -240,9 +242,9 @@ public class HomeFragment extends Fragment {
     //depois para não duplicar itens no banco
     private void carregaBancoInicial(){
         //Exemplo adicionando as imagens que estavam antes
-        save("Passeio 1","https://cdn.culturagenial.com/imagens/cristo-redentor-3-cke.jpg","Descricao evento 1","1");
-        save("Passeio 2","https://h8f7z4t2.stackpathcdn.com/wp-content/uploads/2015/10/pontos-turisticos-em-roma-640x449.jpg", "Descricao evento 2","1");
-        save("Passeio 3","https://classic.exame.com/wp-content/uploads/2016/09/size_960_16_9_taj-mahal7.jpg?quality=70&strip=info&w=960", "Descricao evento 3","2");
-        save("Passeio 4","https://www.remessaonline.com.br/blog/wp-content/uploads/2022/06/pontos-turisticos-mais-visitados-do-mundo-1170x780.jpg.optimal.jpg", "Descricao evento 4","3");
+        save("Passeio 1","https://cdn.culturagenial.com/imagens/cristo-redentor-3-cke.jpg","Descricao evento 1","Piracicaba","1");
+        save("Passeio 2","https://h8f7z4t2.stackpathcdn.com/wp-content/uploads/2015/10/pontos-turisticos-em-roma-640x449.jpg", "Descricao evento 2","São Paulo","1");
+        save("Passeio 3","https://classic.exame.com/wp-content/uploads/2016/09/size_960_16_9_taj-mahal7.jpg?quality=70&strip=info&w=960", "Descricao evento 3","Piracicaba","2");
+        save("Passeio 4","https://www.remessaonline.com.br/blog/wp-content/uploads/2022/06/pontos-turisticos-mais-visitados-do-mundo-1170x780.jpg.optimal.jpg", "Descricao evento 4","São Paulo","3");
     }
 }
