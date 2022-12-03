@@ -5,6 +5,8 @@ public class Passeios {
     private String url;
     private int id;
     private String descricao;
+    private String local;
+    private String categoria;
 
     public Passeios() {
 
@@ -40,5 +42,21 @@ public class Passeios {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }
