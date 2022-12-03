@@ -86,7 +86,7 @@ public class TopTrendsFragment extends Fragment {
 
 
         //instancia o recycler view pelo toptrends fragment
-        rv = view.findViewById(R.id.recyclerView);
+        rv = view.findViewById(R.id.recyclerView2);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setItemAnimator(new DefaultItemAnimator());
 
