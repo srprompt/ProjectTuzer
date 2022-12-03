@@ -56,4 +56,25 @@ public class DBAdapter {
 
         return db.query(Constante.TB_NOME, colunas, null, null, null, null, null);
     }
+
+    //Salva perfil
+    public long addPerfil(String name, String url, String dataNasc, String cidade, Integer estado, String email, Integer sexo){
+        try {
+            ContentValues cv = new ContentValues();
+            cv.put(Constante.NOME_USUARIO, name);
+            cv.put(Constante.URL, url);
+            cv.put(Constante.DATA_NASC,dataNasc);
+            cv.put(Constante.CIDADE,cidade);
+            cv.put(Constante.ESTADO,estado);
+            cv.put(Constante.EMAIL,email);
+            cv.put(Constante.SEXO,sexo);
+
+            db.insert(Constante.TB_NOME_USUARIO,Constante.ID_USUARIO,cv);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 }

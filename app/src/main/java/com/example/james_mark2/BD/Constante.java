@@ -7,16 +7,30 @@ public class Constante {
     static final String URL="url";
     static final String DESCRICAO = "descricao";
     static final String LOCAL = "local";
+    static final String CATEGORIA = "categoria";
+
+    static final String ID_USUARIO="id";
+    static final String NOME_USUARIO="nome";
+    static final String EMAIL="email";
+    static final String DATA_NASC="data_nasc";
+    static final String CIDADE="cidade";
+    static final String ESTADO="estado";
+    static final String SEXO="sexo";
 
     //DB Properties
     static final String DB_NOME="banco_tuzer_DB";
     static final String TB_NOME="passeio_TB";
+    static final String TB_NOME_USUARIO="usuario_TB";
     static final int DB_VERSION=1;
 
     //CREATE TABLE STMT
     static final String CREATE_TB= "CREATE TABLE passeio_TB (id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + "nome TEXT NOT NULL, url TEXT NOT NULL, descricao TEXT NOT NULL, local TEXT);";
+            + "nome TEXT NOT NULL, url TEXT NOT NULL, descricao TEXT NOT NULL, local TEXT, categoria TEXT);";
+
+    static final String CREATE_TB_USUARIO= "CREATE TABLE usuario_TB (id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "nome TEXT NOT NULL, email TEXT NOT NULL, data_nasc TEXT NOT NULL, cidade TEXT NOT NULL, estado INTEGER, sexo INTEGER);";
 
     //UPGRADE TB
     static final String UPGRADE_TB = "DROP TABLE IF EXISTS " + TB_NOME;
+    static final String UPGRADE_TB_USUARIO = "DROP TABLE IF EXISTS " + TB_NOME_USUARIO;
 }
