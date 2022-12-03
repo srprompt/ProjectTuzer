@@ -11,10 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.james_mark2.BuildConfig;
 import com.example.james_mark2.DetailsActivity;
@@ -52,6 +54,7 @@ public class ExploreFragment extends Fragment {
     private int cont=0;
     private String aux;
     private String aux2;
+    Toast toastAlerta;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,7 +113,11 @@ public class ExploreFragment extends Fragment {
                         aux = markerTitle;
                         cont++;
 
+                        toastAlerta = Toast.makeText(getActivity(), "Dê mais um clique para acessar", Toast.LENGTH_SHORT);
+                        toastAlerta.show();
+
                         if(cont==1 && markerTitle.equals(aux2)) {
+                            //toastAlerta.cancel();
                             Intent i = new Intent(getContext(), DetailsActivity.class);
                             i.putExtra("title", markerTitle);
                             startActivity(i);
