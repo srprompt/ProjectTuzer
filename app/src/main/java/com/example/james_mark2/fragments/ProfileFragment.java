@@ -25,7 +25,9 @@ import android.widget.Toast;
 import com.example.james_mark2.BD.DBAdapter;
 import com.example.james_mark2.R;
 import com.example.james_mark2.mData.Usuario;
+import com.example.james_mark2.mPicasso.PicassoClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,6 +64,10 @@ public class ProfileFragment extends Fragment {
     private Button btnSalvar;
     private FloatingActionButton menuPerfil;
     private int id_sexo,id_estado;
+    private FloatingActionButton urlPerfil;
+    private EditText urlEditText;
+    private Button btnSalvarUrl;
+    private String urlAtual;
 
     Usuario usuario = new Usuario();
     ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -120,10 +126,11 @@ public class ProfileFragment extends Fragment {
         menuEditar = view.findViewById(R.id.btnMenuEditar);
         btnSalvar = view.findViewById(R.id.btnSalvar);
         menuPerfil = view.findViewById(R.id.btnMenuLogin);
+        urlPerfil = view.findViewById(R.id.btnUrl);
 
         habilitaDesabilitaCampos(false);
 
-       // carregaperfil();
+        PicassoClient.downloadImagePerfil(getContext(),urlAtual,imageViewUsario);
 
         retrieve();
         //preencheCampos();
@@ -157,17 +164,9 @@ public class ProfileFragment extends Fragment {
 
                 habilitaDesabilitaCampos(false);
 
-/*
-                usuario.setNome(editTextNome.getText().toString());
-                usuario.setCidade(editTextCidade.getText().toString());
-                usuario.setDataNasc(editTextDataNasc.getText().toString());
-                usuario.setEmail(editTextEmail.getText().toString());
-                usuario.setSexo(id_sexo);
-                usuario.setEstado(id_estado);
-                usuarios.add(usuario);*/
                 DBAdapter db = new DBAdapter(getContext());
                 db.openDB();
-                long result=db.addPerfil(editTextNome.getText().toString(),"",editTextDataNasc.getText().toString(),editTextCidade.getText().toString(),
+                long result=db.addPerfil(editTextNome.getText().toString(),urlAtual,editTextDataNasc.getText().toString(),editTextCidade.getText().toString(),
                         id_estado,editTextEmail.getText().toString(),id_sexo);
                 if(result!=1 || editTextNome.getText().toString().length()<=0){
                     Toast.makeText(getContext(),"Não foi possivel salvar.",Toast.LENGTH_SHORT).show();
@@ -277,6 +276,40 @@ public class ProfileFragment extends Fragment {
         spinnerEstado.setAdapter(spinnerArrayAdapter);
         //fim adapter estado
 
+
+        //click add url imagem
+        urlPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayDialogUrl();
+            }
+        });
+    }
+
+    private void displayDialogUrl(){
+        Dialog d = new Dialog(getContext());
+        d.setTitle("Save url");
+        d.setContentView(R.layout.display_url);
+
+        urlEditText = d.findViewById(R.id.urlEditTxt);
+        btnSalvarUrl = d.findViewById(R.id.urlBtnSalvar);
+
+        btnSalvarUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(urlEditText.getText().toString().length()>0 && urlEditText.getText().toString() != null) {
+                    urlAtual = urlEditText.getText().toString();
+                    PicassoClient.downloadImagePerfil(getContext(),urlAtual,imageViewUsario);
+                    //Picasso.with(getContext()).load(urlEditText.getText().toString()).placeholder(R.drawable.placeholder).fit().centerInside().into(imageViewUsario);
+                }
+                preencheCampos();
+
+                d.hide();
+            }
+        });
+
+        d.show();
     }
 
     private void habilitaDesabilitaCampos(boolean controle){
@@ -287,6 +320,7 @@ public class ProfileFragment extends Fragment {
         spinnerEstado.setEnabled(controle);
         spinnerSexo.setEnabled(controle);
         btnSalvar.setEnabled(controle);
+        urlPerfil.setEnabled(controle);
     }
 
     private void displayDialog(){
@@ -303,6 +337,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
               retrieve();
               usuario.setNomeLogin(nomeLogin.getText().toString());
+
                 preencheCampos();
                 d.hide();
             }
@@ -365,6 +400,8 @@ public class ProfileFragment extends Fragment {
                spinnerEstado.setSelection(usuarios.get(i).getEstado());
                spinnerSexo.setSelection(usuarios.get(i).getSexo());
                //url
+               //urlEditText.setText(usuarios.get(i).getUrl());
+               PicassoClient.downloadImagePerfil(getContext(),usuarios.get(i).getUrl(),imageViewUsario);
            }
         }
 
