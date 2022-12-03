@@ -17,4 +17,16 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string-array name="array_top_trends_spinner">
+        <item>Copa 2022</item>
+        <item>Esportes</item>
+        <item>Gastronomia</item>
+        <item>Infantil</item>
+        <item>Réveillon 2023</item>
+        <item>Shows</item>
+        <item>Turismo</item>
+    </string-array>
+
+
 </resources>

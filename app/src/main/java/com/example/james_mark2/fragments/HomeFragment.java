@@ -103,7 +103,6 @@ public class HomeFragment extends Fragment {
         categoria4 = view.findViewById(R.id.btnCategoria4);
         categoria5 = view.findViewById(R.id.btnCategoria5);
         categoria6 = view.findViewById(R.id.btnCategoria6);
-
         //adapter
         adapter = new MyAdapter(getContext(), passeios);
         rv.setAdapter(adapter);
