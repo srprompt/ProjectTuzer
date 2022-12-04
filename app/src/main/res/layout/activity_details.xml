@@ -4,28 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".DetailsActivity">
-
-    <TextView
-        android:id="@+id/marker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="MarkerTitle"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="208dp"
-        android:layout_below="@+id/marker"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
         android:padding="0dp" />
+
+    <TextView
+        android:id="@+id/marker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-black"
+        android:text="MarkerTitle"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtView_local"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/marker"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Local"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtView_lugar_cidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtView_local"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtView_endereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtView_lugar_cidade"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-light"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnTrajeto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtView_endereco"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:text="Ver trajeto"
+        android:textSize="10sp" />
 
 </RelativeLayout>
