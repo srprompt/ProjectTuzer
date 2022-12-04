@@ -171,7 +171,7 @@ public class ExploreFragment extends Fragment {
                                                 {"3", "Piracicaba", "Alto do Mirante", "Turismo", "-22.713849564796504", "-47.65112820630401"},
                                                 {"4", "Piracicaba", "Zoológico", "Turismo", "-22.69503513557547", "-47.65183755132581"},
                                                 {"5", "Piracicaba", "Várzea Cup", "Evento", "-22.69285082843774", "-47.66172175823422"},
-                                                {"6", "Piracicaba", "IFSP", "TAMO AQUI","-22.69338485527287", "-47.62550358946037"},
+                                                {"6", "Piracicaba", "TAMO AQUI", "TAMO AQUI","-22.69338485527287", "-47.62550358946037"},
                                                 {"7", "Piracicaba", "McDonald's", "Gastronomia","-22.729672314113348", "-47.64803649179834"},
 
                                                 {"8", "Passos", "Dianelli Massas e Doces", "Gastronomia", "-20.72101017949072", "-46.60643463679768"},
@@ -205,21 +205,25 @@ public class ExploreFragment extends Fragment {
                                         googleMap.addMarker(new MarkerOptions()
                                                 .position(iflandia)
                                                 .title(evento[j][2])
+                                                .snippet("Categoria: " + evento[j][3])
                                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
                                     }else if (evento[j][3] == "Turismo") {
                                     googleMap.addMarker(new MarkerOptions()
                                             .position(iflandia)
                                             .title(evento[j][2])
+                                            .snippet("Categoria:" + evento[j][3])
                                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
                                     }else if (evento[j][3] == "Gastronomia") {
                                         googleMap.addMarker(new MarkerOptions()
                                                 .position(iflandia)
                                                 .title(evento[j][2])
+                                                .snippet("Categoria: " + evento[j][3])
                                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                                     }else{
                                         googleMap.addMarker(new MarkerOptions()
                                                 .position(iflandia)
                                                 .title(evento[j][2])
+                                                .snippet("Categoria: " + evento[j][3])
                                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
                                     }
 
