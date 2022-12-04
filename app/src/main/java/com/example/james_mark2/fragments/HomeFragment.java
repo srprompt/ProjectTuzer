@@ -24,11 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -57,14 +53,7 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -113,14 +102,11 @@ public class HomeFragment extends Fragment {
         //adapter
         adapter = new MyAdapter(getContext(), passeios);
         rv.setAdapter(adapter);
-        //usar funcao save pra adicionar no banco.
-        //save("teste","https://blogdeviagens.com.br/wp-content/uploads/2021/04/5_passeios_em_joao_pessoa.jpg"); Exemplo adicionar
-
 
         if(!bancoCarregado) {
-            retrieve(); //Depois de que o banco tiver alguma carga, só chamar essa pra pegar as imagens e texto
+            retrieve(); //Busca cadastros no banco
             if(passeios.size()<=0){
-            carregaBancoInicial(); // chamar apenas uma vez *descomentar caso o banco esteja vazio (n sei se o banco é compartilhado
+            carregaBancoInicial();
             bancoCarregado=true;
             retrieve();
             }
@@ -176,6 +162,7 @@ public class HomeFragment extends Fragment {
 
     }
 
+    //Salva Eventos no banco
     private void save(String name, String url, String descricao,String local, String categoria){
         DBAdapter db = new DBAdapter(getContext());
         db.openDB();
@@ -186,6 +173,7 @@ public class HomeFragment extends Fragment {
         db.closeDB();
     }
 
+    //Recupera Eventos do banco
     private void retrieve(){
         try {
             passeios.clear();
@@ -221,6 +209,7 @@ public class HomeFragment extends Fragment {
     }
 
 
+    //Recupera categorias dos eventos
     private void carregaCategoria(int categoriaId){
         try {
             passeios.clear();
@@ -255,9 +244,8 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    //Essa função só está aqui para efetuar uma carga de conteudo inicial enquanto não é possivel adicionar algo pelo aplicativo
-    //É necessario chamar apenas uma vez, realizar uma chamada na primeira execução caso o banco esteja sem conteudo e comentar
-    //depois para não duplicar itens no banco
+
+    //Gera carga inicial do banco de dados
     private void carregaBancoInicial(){
 
         save("Porto Certo","https://cdn.discordapp.com/attachments/1008789338412306452/1048944268468822066/image.png","A empresa Porto Certo Emporio, Bar E Restaurante Ltda, localizada no bairro Centro, em Piracicaba-SP foi fundada em 2020. A atividade principal da empresa é Comércio Varejista de Bebidas.\n" +

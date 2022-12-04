@@ -33,11 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -77,14 +73,7 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
@@ -116,6 +105,7 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        //Instancia campos
         spinnerEstado = view.findViewById(R.id.spinnerEstado);
         editTextNome = view.findViewById(R.id.editTextNome);
         editTextDataNasc = view.findViewById(R.id.editTextDataNasc);
@@ -128,12 +118,14 @@ public class ProfileFragment extends Fragment {
         menuPerfil = view.findViewById(R.id.btnMenuLogin);
         urlPerfil = view.findViewById(R.id.btnUrl);
 
+        //Desabilita campos
         habilitaDesabilitaCampos(false);
 
+        //Carrega insformações perfil
         PicassoClient.downloadImagePerfil(getContext(),urlAtual,imageViewUsario);
 
         retrieve();
-        //preencheCampos();
+
 
         //login perfil
         menuPerfil.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +209,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 id_sexo = position;
-               // usuario.setSexo(position);
             }
 
             @Override
@@ -236,8 +227,7 @@ public class ProfileFragment extends Fragment {
         ) {
             @Override
             public boolean isEnabled(int position){
-                // Disable the first item from Spinner
-                // First item will be use for hint
+
                 return position != 0;
             }
             @Override
@@ -245,12 +235,11 @@ public class ProfileFragment extends Fragment {
                     int position, View convertView,
                     @NonNull ViewGroup parent) {
 
-                // Get the item view
+                // Pega item da view
                 View view = super.getDropDownView(
                         position, convertView, parent);
                 TextView textView = (TextView) view;
                 if(position == 0){
-                    // Set the hint text color gray
                     textView.setTextColor(Color.GRAY);
                 }
                 else { textView.setTextColor(Color.BLACK); }
@@ -277,7 +266,7 @@ public class ProfileFragment extends Fragment {
         //fim adapter estado
 
 
-        //click add url imagem
+        //click adiciona url imagem
         urlPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -286,6 +275,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    //Mostra pop-up url
     private void displayDialogUrl(){
         Dialog d = new Dialog(getContext());
         d.setTitle("Save url");
@@ -301,8 +291,6 @@ public class ProfileFragment extends Fragment {
                 if(urlEditText.getText().toString().length()>0 && urlEditText.getText().toString() != null) {
                     urlAtual = urlEditText.getText().toString();
                     PicassoClient.downloadImagePerfil(getContext(),urlAtual,imageViewUsario);
-
-                    //Picasso.with(getContext()).load(urlEditText.getText().toString()).placeholder(R.drawable.placeholder).fit().centerInside().into(imageViewUsario);
                 }
                 preencheCampos();
 
@@ -313,6 +301,7 @@ public class ProfileFragment extends Fragment {
         d.show();
     }
 
+    //Habilita ou desabilita campos
     private void habilitaDesabilitaCampos(boolean controle){
         editTextNome.setEnabled(controle);
         editTextEmail.setEnabled(controle);
@@ -324,6 +313,7 @@ public class ProfileFragment extends Fragment {
         urlPerfil.setEnabled(controle);
     }
 
+    //Mostra pop-up login
     private void displayDialog(){
         Dialog d = new Dialog(getContext());
         d.setTitle("Save To DB");
@@ -348,8 +338,8 @@ public class ProfileFragment extends Fragment {
     }
 
 
+    //Busca no banco de dados
     private void retrieve(){
-        //usuario.setNomeLogin(nomeLogin.getText().toString());
         try {
             usuarios.clear();
             DBAdapter db = new DBAdapter(getContext());
@@ -378,7 +368,7 @@ public class ProfileFragment extends Fragment {
                     usuarios.add(us);
 
                     if(usuarios.size()>0){
-                        //preencheCampos();
+
                     }
                     db.closeDB();
             }
@@ -388,7 +378,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
-
+//Coloca informações do banco do perfil do usuario
     private void preencheCampos(){
 
         for(int i=0;i<usuarios.size();i++){
@@ -400,8 +390,6 @@ public class ProfileFragment extends Fragment {
                editTextCidade.setText(usuarios.get(i).getCidade());
                spinnerEstado.setSelection(usuarios.get(i).getEstado());
                spinnerSexo.setSelection(usuarios.get(i).getSexo());
-               //url
-               //urlEditText.setText(usuarios.get(i).getUrl());
                PicassoClient.downloadImagePerfil(getContext(),usuarios.get(i).getUrl(),imageViewUsario);
            }
         }
