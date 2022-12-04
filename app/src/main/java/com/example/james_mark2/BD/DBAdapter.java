@@ -16,7 +16,7 @@ public class DBAdapter {
         this.c = c;
         helper = new DBHelper(c);
     }
-    //OPEN
+    //Abre Banco
     public DBAdapter openDB(){
         try {
             db=helper.getWritableDatabase();
@@ -26,7 +26,7 @@ public class DBAdapter {
 
         return this;
     }
-    //CLOSE
+    //Fecha Banco
     public void closeDB(){
         try {
             helper.close();
@@ -35,7 +35,7 @@ public class DBAdapter {
         }
 
     }
-    //SAVE
+    //Salva Passeio
     public long add(String name, String url, String descricao,String local, String categoria){
         try {
             ContentValues cv = new ContentValues();
@@ -54,13 +54,14 @@ public class DBAdapter {
         return 0;
     }
 
-    //RETRIEVE
+    //Recupera passeios cadastrados
     public Cursor getPasseios(){
         String[] colunas = {Constante.ROW_ID, Constante.NOME, Constante.URL, Constante.DESCRICAO,Constante.LOCAL, Constante.CATEGORIA};
 
         return db.query(Constante.TB_NOME, colunas, null, null, null, null, null);
     }
 
+    //Recupera Categoria Passeios
     public Cursor getPasseiosCategoria(int categoriaId){
         String[] colunas = {Constante.ROW_ID, Constante.NOME, Constante.URL, Constante.DESCRICAO, Constante.CATEGORIA};
 
@@ -88,6 +89,7 @@ public class DBAdapter {
         return 0;
     }
 
+    //Recupera perfil
     public Cursor getPerfil(){
         String[] colunas = {Constante.ID_USUARIO, Constante.NOME_USUARIO, Constante.URL, Constante.EMAIL, Constante.DATA_NASC,Constante.CIDADE, Constante.ESTADO, Constante.SEXO};
 
@@ -95,7 +97,7 @@ public class DBAdapter {
         return db.query(Constante.TB_NOME_USUARIO, colunas, null, null, null, null, null);
     }
 
-    //add favorito
+    //Adiciona ao favorito
     public long addFavorito(Integer idPasseio, Integer idUsuario){
         try {
             ContentValues cv = new ContentValues();
@@ -111,6 +113,7 @@ public class DBAdapter {
         return 0;
     }
 
+    //Recupera os favoritos
     public Cursor getFavoritos(){
         String[] colunas = {Constante.ID_FAVORITO, Constante.ROW_ID, Constante.ID_USUARIO};
 

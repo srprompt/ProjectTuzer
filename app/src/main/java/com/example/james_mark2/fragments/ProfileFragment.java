@@ -301,6 +301,7 @@ public class ProfileFragment extends Fragment {
                 if(urlEditText.getText().toString().length()>0 && urlEditText.getText().toString() != null) {
                     urlAtual = urlEditText.getText().toString();
                     PicassoClient.downloadImagePerfil(getContext(),urlAtual,imageViewUsario);
+
                     //Picasso.with(getContext()).load(urlEditText.getText().toString()).placeholder(R.drawable.placeholder).fit().centerInside().into(imageViewUsario);
                 }
                 preencheCampos();

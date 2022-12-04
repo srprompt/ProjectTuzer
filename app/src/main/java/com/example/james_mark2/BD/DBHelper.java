@@ -10,6 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, Constante.DB_NOME, null, Constante.DB_VERSION);
     }
 
+    //Cria tabelas do banco de dados
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
@@ -20,6 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }    }
 
+    //Atualiza tabelas do banco de dados
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(Constante.UPGRADE_TB);

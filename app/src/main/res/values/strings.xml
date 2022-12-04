@@ -19,6 +19,7 @@
     <string name="login_failed">"Login failed"</string>
 
     <string-array name="array_top_trends_spinner">
+        <item>Em Alta</item>
         <item>Copa 2022</item>
         <item>Esportes</item>
         <item>Gastronomia</item>

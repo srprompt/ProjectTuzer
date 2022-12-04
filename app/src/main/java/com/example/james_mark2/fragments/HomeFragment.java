@@ -259,10 +259,60 @@ public class HomeFragment extends Fragment {
     //É necessario chamar apenas uma vez, realizar uma chamada na primeira execução caso o banco esteja sem conteudo e comentar
     //depois para não duplicar itens no banco
     private void carregaBancoInicial(){
-        //Exemplo adicionando as imagens que estavam antes
-        save("Passeio 1","https://cdn.culturagenial.com/imagens/cristo-redentor-3-cke.jpg","Descricao evento 1","Piracicaba","1");
-        save("Passeio 2","https://h8f7z4t2.stackpathcdn.com/wp-content/uploads/2015/10/pontos-turisticos-em-roma-640x449.jpg", "Descricao evento 2","São Paulo","1");
-        save("Passeio 3","https://classic.exame.com/wp-content/uploads/2016/09/size_960_16_9_taj-mahal7.jpg?quality=70&strip=info&w=960", "Descricao evento 3","Piracicaba","2");
-        save("Passeio 4","https://www.remessaonline.com.br/blog/wp-content/uploads/2022/06/pontos-turisticos-mais-visitados-do-mundo-1170x780.jpg.optimal.jpg", "Descricao evento 4","São Paulo","3");
+
+        save("Porto Certo","https://cdn.discordapp.com/attachments/1008789338412306452/1048944268468822066/image.png","A empresa Porto Certo Emporio, Bar E Restaurante Ltda, localizada no bairro Centro, em Piracicaba-SP foi fundada em 2020. A atividade principal da empresa é Comércio Varejista de Bebidas.\n" +
+                "Endereço: Avenida Beira Rio, 1045 - Centro\n" +"Piracicaba - SP\n" + "\n" + "CEP: 13400-820\n\n" + "Horários: \n" +
+                "\nSegunda-feira: 11:30 às 22:30\n" +"Terça-feira: Não abre\n" +"Quarta-feira: 11:30 às 23:00\n" + "Quinta-feira: 11:30 às 23:00\n" +
+                "Sexta-feira: 11:30 às 23:00\n" + "Sábado: 11:30 às 23:00\n" + "Domingo: 12:00 às 22:00","Piracicaba","3");
+
+        save("Alto do Mirante","https://cdn.discordapp.com/attachments/1008789338412306452/1048947822956912640/image.png","Atração turística em Piracicaba, São Paulo.\n" +
+                "Localizado sob o Rio Piracicaba, o mirante de 24 metros de altura oferece uma vista de 360º sobre a cidade.\n" +
+                "\n" + "Endereço: Av. Armando de Salles Oliveira - Centro, Piracicaba - SP\n\n" +
+                "Horário: Abre sáb. às 09:30\n\n" + "Telefone: (19) 3403-2635","Piracicaba","5");
+
+        save("Zoológico Municipal de Piracicaba","https://cdn.discordapp.com/attachments/1008789338412306452/1048949043461627984/image.png",
+                "Zoológico em Piracicaba, São Paulo.\n" +
+                "Um aviário, um habitat de répteis e felinos grandes em áreas fechadas, além de parquinhos e parede de escalada.\n" +
+                "\nEndereço: Av. Mal. Castelo Branco, 426 - Jardim Primavera, Piracicaba - SP, 13412-010\n" +
+                "\nHorários: \n" + "domingo: 09:00–16:00\n" + "segunda-feira: Fechado\n" +
+                "terça-feira: 09:00–16:00\n" + "quarta-feira: 09:00–16:00\n" +
+                "quinta-feira: 09:00–16:00\n" + "sexta-feira: 09:00–16:00\n" +
+                "sábado\t09:00–16:00\n\n" + "Telefone: (19) 3421-3425","Piracicaba","5");
+
+        save("Dianelli Massas e Doces","https://cdn.discordapp.com/attachments/1008789338412306452/1048950354827542618/image.png",
+                "Confeitaria\n\n" + "Endereço: R. Dois de Novembro, 151 - Centro, Passos - MG, 37900-128\n\n" +
+                        "Horários: \n" + "domingo: 08:00–13:00\n" + "segunda-feira: Fechado\n" +
+                        "terça-feira: 08:00–18:00\n" + "quarta-feira: 08:00–18:00\n" + "quinta-feira: 08:00–18:00\n" +
+                        "sexta-feira: 08:00–18:00\n" + "sábado: 08:00–15:00\n\n" + "Telefone: (35) 98882-9466", "Passos","3");
+
+        save("Praça da Matriz","https://cdn.discordapp.com/attachments/1008789338412306452/1048954345556819968/image.png",
+                "Praça em Passos, Minas Gerais\n\n" + "Endereço: R. Dr. Bernardino Vieira - Centro, Passos - MG, 37900-063\n" +
+                "\nHorários: \n" + "Todos os dias com atendimento 24 horas\n", "Passos","5");
+
+        save("Borogodó Botequim","https://cdn.discordapp.com/attachments/1008789338412306452/1048955605223743538/image.png",
+                "Bar\n" + "Opções de serviço: Refeição no local\n\n" +
+                        "Endereço: Av. Dr. Breno Soares Maia, 92 - Belo Horizonte, Passos - MG, 37900-026\n\n" +
+                        "Horários: \n" +"domingo: 18:00–00:00\n" + "segunda-feira: Fechado\n" + "terça-feira: 18:00–00:00\n" +
+                        "quarta-feira: 18:00–00:00\n" + "quinta-feira: 18:00–00:00\n" + "sexta-feira: 18:00–02:00\n" +
+                        "sábado: 18:00–02:00\n\n" + "Telefone: (35) 99936-3743","Passos","3");
+        save("Museu do Futebol","https://cdn.discordapp.com/attachments/1008789338412306452/1048957236325666826/image.png",
+                "Museu em São Paulo\n" +
+                        "Museu do Futebol é um espaço voltado para os mais diferentes assuntos envolvendo a prática, a história e curiosidades do futebol brasileiro e mundial. Wikipédia\n" +
+                        "\nLocalizado em: Estádio Municipal Paulo Machado de Carvalho\n\n" +
+                        "Endereço: Praça Charles Miller, s/n - Pacaembu, São Paulo - SP, 01234-010\n" +
+                        "Horário: \n" + "domingo: 09:00–17:00\n" + "segunda-feira: Fechado\n" + "terça-feira: 09:00–21:00\n" +
+                        "quarta-feira: 09:00–17:00\n" + "quinta-feira: 09:00–17:00\n" + "sexta-feira: 09:00–17:00\n" +
+                        "sábado: 09:00–17:00\n\n" + "Telefone: (11) 3664-3848\n" + "Visitantes: 419.363 (2014)\n" +
+                        "Fundação: 2008","São Paulo","6");
+
+        save("O Mágico de Oz","https://cdn.discordapp.com/attachments/1008789338412306452/1048958524442542200/image.png",
+                "Baseado na obra de Lian Frank Baum. O espetáculo Mágico de Óz conta a clássica história de Dorothy, uma garota que tem sua casa levada"+
+                        " por um ciclone, se perde em um mundo fantástico, e para saber o caminho de volta precisa encontrar o Grande Mágico de Oz. Com a ajuda da"+
+                        " Bruxa boa do Norte, e de seus amigos Espantalho, Homem de Lata e Leão, Dorothy segue pela estrada de tijolos amarelos em direção à Cidade" +
+                        " das Esmeraldas. Porém, a terrível Bruxa Má do Oeste promete atrapalhar os planos da garota com feitiços, magias e gargalhadas.\n" +
+                        "\nEndereço: Av. Brigadeiro Luís Antônio, 931 - Bela Vista, São Paulo - SP, 01317-001\n\n" +
+                        "Telefone: (11) 3105-3129","São Paulo","4");
+
+
     }
 }
