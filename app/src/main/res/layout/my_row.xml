@@ -52,11 +52,12 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:clickable="true"
-                android:background="@color/purple_700"
-                android:backgroundTint="@color/purple_700"
+
+
+                android:src="@mipmap/ic_favoritos_red_foreground"
+                app:backgroundTint="#F5FF0000"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_favoritos" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
