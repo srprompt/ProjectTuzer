@@ -301,6 +301,13 @@ public class HomeFragment extends Fragment {
                         "\nEndereço: Av. Brigadeiro Luís Antônio, 931 - Bela Vista, São Paulo - SP, 01317-001\n\n" +
                         "Telefone: (11) 3105-3129","São Paulo","4");
 
-
+        save("Wet'n Wild","https://cdn.discordapp.com/attachments/1008789338412306452/1048976058973683742/image.png",
+                "O Réveillon 2023 - Wet'n Wild \n\n" + "Horário da festa: das 21h às 04h.\n" + "Endereço: Rodovia dos Bandeirantes, s/n, Zona Rural - Itupeva, SP\n\n" +
+                        "Pool Party\n\n" + "- Piscina de ondas aberta para pular as sete ondas;\n" + "- Taça de espumante para brinde;\n" +
+                        "- Open Bar: cerveja(Amstel), água e refrigerante\n\n" + "Camarote Azul\n\n" + "- Acesso a Pool Party;\n" +
+                        "- Piscina de ondas aberta para pular as sete ondas;\n" + "- Taça de espumante para brinde;\n" + "- Open Bar: cerveja(Amstel), água e refrigerante\n\n" +
+                        "Camarote Verde\n\n" + "- Acesso a Pool Party;\n" + "- Piscina de ondas aberta para pular as sete ondas;\n" + "- Taça de espumante para brinde;\n" +
+                        "- Open Bar: cerveja(Heineken), água e refrigerante",
+                "Itupeva","2");
     }
 }
