@@ -21,6 +21,7 @@ public class EventoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evento);
 
+        //Instancia componentes dos detalhes do evento
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -30,6 +31,7 @@ public class EventoActivity extends AppCompatActivity {
         txtEvento = findViewById(R.id.textViewEvento);
         Intent intent = getIntent();
 
+        //Carrega conteudo do evento
         if(intent!=null){
             String id = getIntent().getStringExtra("Image id");
             String url = getIntent().getStringExtra("Image url");

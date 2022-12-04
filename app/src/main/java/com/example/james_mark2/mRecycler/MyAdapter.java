@@ -46,9 +46,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         //Bind data
         holder.nomeTxt.setText(passeios.get(position).getNome());
 
-        //Image
+        //Imagem
         PicassoClient.downloadImage(c,passeios.get(position).getUrl(),holder.img);
 
+        //Click na imagem
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
                 view.getContext().startActivity(intent);
             }
         });
+
         //btn favorito click
         holder.btnFavorito.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +78,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         });
     }
 
+    //Recupera total de eventos
     @Override
     public int getItemCount() {
         return passeios.size();

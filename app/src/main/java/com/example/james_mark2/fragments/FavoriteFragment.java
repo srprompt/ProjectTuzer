@@ -87,6 +87,7 @@ public class FavoriteFragment extends Fragment {
         carregaFavoritos();
     }
 
+    //Carrega eventos favoritos
     private void carregaFavoritos() {
         favoritos.clear();
         DBAdapter db = new DBAdapter(getContext());
