@@ -78,7 +78,7 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 // When map is loaded
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iflandia, 15));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(iflandia, 8));
                 /*googleMap.addMarker(new MarkerOptions()
                         .position(iflandia)
                         .title("Katiau Inc.")
